@@ -1,0 +1,20 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1
+
+int findLongestConseqSubseq(int arr[], int N){
+        int longestStreak=0;
+        set<int>hashSet;
+        for(int it=0;it<N;it++)
+            hashSet.insert(arr[it]);
+        for(int it=0;it<N;it++){
+            if(!hashSet.count(arr[it]-1)){
+                int currentNum=arr[it];
+                int currentStreak=1;
+                while(hashSet.count(currentNum+1)){
+                    currentNum++;
+                    currentStreak++;
+                }
+                longestStreak=max(longestStreak,currentStreak);
+            }
+        }
+        return longestStreak;
+}
