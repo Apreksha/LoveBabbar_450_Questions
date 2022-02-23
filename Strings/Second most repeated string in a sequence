@@ -1,0 +1,23 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence0534/1
+
+    string secFrequent (string arr[], int n){
+        //code here.
+        int maxi=0,smaxi=0;
+        string ans="",fstring="";
+        unordered_map<string,int>m;
+        for(int i=0;i<n;i++)
+            m[arr[i]]++;
+        for(auto it:m){
+            if(maxi<it.second){
+                smaxi=maxi;
+                ans=fstring;
+                fstring=it.first;
+                maxi=it.second;
+            }
+            else if(smaxi<it.second){
+                smaxi=it.second;
+                ans=it.first;
+            }
+        }
+        return ans;
+    }
