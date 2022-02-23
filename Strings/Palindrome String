@@ -1,0 +1,15 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/palindrome-string0817/1
+
+	int isPalindrome(string S){
+	    // Your code goes here
+	    int n=S.length(),low=0,high=n-1;
+	    while(low<=high){
+	        if(S[low]==S[high]){
+	            low++;
+	            high--;
+	        }
+	        else
+	            return 0;
+	    }
+	    return 1;
+	}
