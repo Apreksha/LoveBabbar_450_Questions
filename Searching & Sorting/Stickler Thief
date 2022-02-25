@@ -1,0 +1,19 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/stickler-theif-1587115621/1
+
+    int FindMaxSum(int arr[], int n)
+    {
+        // Your code here
+        if(n==0)
+            return 0;
+        if(n==1)
+            return arr[0];
+        if(n==2)
+            return max(arr[1],arr[0]);
+        int prev=arr[0],next=max(arr[1],arr[0]),maxi;
+        for(int i=3;i<n;i++){
+            maxi=max(next,prev+arr[i]);
+            prev=next;
+            next=maxi;
+        }
+        return maxi;
+    }
