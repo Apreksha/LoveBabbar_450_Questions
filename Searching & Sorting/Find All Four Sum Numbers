@@ -1,0 +1,38 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/1
+
+    vector<vector<int> > fourSum(vector<int> &arr, int k) {
+        sort(arr.begin(),arr.end());
+        vector<vector<int>>ans;
+        unordered_set<string>s;
+        int n=arr.size();
+        for(int i=0;i<n-3;i++){
+            for(int j=i+1;j<n-2;j++){
+                int l=j+1,m=n-1,remaining=k-arr[i]-arr[j];
+                while(l<m){
+                    if(arr[l]+arr[m]==remaining){
+                        vector<int>t;
+                        string check;
+                        check+= (arr[i]);
+                        check+= (arr[j]);
+                        check+=(arr[l]);
+                        check+=(arr[m]);
+                        if(s.find(check)==s.end()){
+                            s.insert(check);
+                            t.push_back(arr[i]);
+                            t.push_back(arr[j]);
+                            t.push_back(arr[l]);
+                            t.push_back(arr[m]);
+                            ans.push_back(t);
+                        }
+                        l++;
+                        m--;
+                    }
+                    else if(arr[l]+arr[m]<remaining)
+                        l++;
+                    else
+                        m--;
+                }
+            }
+        }
+        return ans;
+    }
